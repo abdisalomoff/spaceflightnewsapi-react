@@ -1,0 +1,32 @@
+.widgets {
+    width: 25%;
+    max-width: 429px;
+    height: 100vh;
+    position: sticky;
+    left: 0;
+    top: 0;
+}
+
+.widgets__input {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #EFF3F4;
+    padding: 10px;
+    border-radius: 31px;
+  }
+  .widgets__input > input {
+    width: 100%;
+    border: none;
+    background-color: #EFF3F4;
+  }
+  .widgets__input > input:focus {
+    outline: none;
+  }
+
+  .widgets__input > label{
+    width: 40px;
+  }
+

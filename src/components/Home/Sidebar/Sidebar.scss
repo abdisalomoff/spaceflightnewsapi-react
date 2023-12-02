@@ -1,0 +1,136 @@
+.sidebar {
+    min-height: 100vh;
+    width: 25%;
+    max-width: 283px;
+    border-right: 1px solid #c4c4c4;
+    height: 100vh;
+    position: sticky;
+    left: 0;
+    top: 0;
+
+    header {
+        padding: 10px 0px;
+
+        .logo {
+            display: block;
+            width: 40px;
+            height: 33px;
+            color: #1da1f2;
+        }
+    }
+
+    nav svg {
+        width: 28px;
+        height: 28px;
+        margin-right: 20px;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 153px;
+        margin: 20px 0px 30px;
+        // gap: 10px;
+
+        span {
+            color: black;
+            font-size: 18px;
+            font-family: Segoe UI;
+            font-weight: 600;
+            word-wrap: break-word;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    nav>*,
+    button.more {
+
+        span {
+            height: 3em;
+            width: fit-content;
+            padding: 0 0.8em;
+          }
+      
+          &:hover span {
+            border-radius: 50px;
+            background: #e0e0e0;
+          }
+    }
+
+
+    button {
+        cursor: pointer;
+        background: unset;
+        border: unset;
+    }
+
+    button.tweet {
+        display: block;
+        font-size: 18px;
+        margin-left: -15px;
+        font-family: Segoe UI;
+        font-weight: 700;
+        background: #1da1f2;
+        color: #fff;
+        width: 100%;
+        max-width: 230px;
+        padding: 15px 0px;
+        border-radius: 1.5em;
+        cursor: pointer;
+    }
+
+    footer {
+
+        margin: 30px 0px    ;
+
+        .account {
+            width: 100%;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: black;
+            font-size: 16px;
+            font-family: Segoe UI;
+                height: 3em;
+                width: fit-content;
+               padding: 35px 20px;
+
+              &:hover {
+                border-radius: 50px;
+                background: #e0e0e0;
+              }
+
+            .photo {
+                border-radius: 100%;
+                width: 40px;
+                height: 40px;
+                background: #192734;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 100%;
+                }
+            }
+
+
+            .name {
+                font-weight: 600;
+            }
+
+            .username {
+                opacity: 0.6;
+            }
+
+            p{
+                display: block;
+                font-weight: 700;
+                margin-left: 20px;
+            }
+        }
+    }
+}

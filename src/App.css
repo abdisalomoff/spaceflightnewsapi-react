@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+@font-face {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 400;
+    src: url("./assets/fonts/SegoeUI.woff2") format("woff2"),
+        url("./assets/fonts/SegoeUI.woff") format("woff");
+}
+
+@font-face {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    src: url("./assets/fonts/SegoeUI-SemiBold.woff2") format("woff2"),
+        url("./assets/fonts/SegoeUI-SemiBold.woff") format("woff");
+}
+
+@font-face {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 700;
+    src: url("./assets/fonts/SegoeUI-Bold.woff2") format("woff2"),
+        url("./assets/fonts/SegoeUI-Bold.woff") format("woff");
+}
+
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+img {
+    vertical-align: middle;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

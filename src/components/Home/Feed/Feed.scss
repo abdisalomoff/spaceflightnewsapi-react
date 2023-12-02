@@ -1,0 +1,106 @@
+.feed {
+    width: 55%;
+    max-width: 909px;
+    border-right: 1px solid #c4c4c4;
+
+
+    header {
+        width: 100%;
+    max-width: 909px;
+        border-bottom: 1px solid #c4c4c4;
+        position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0px;
+
+        h1 {
+            color: black;
+            font-size: 24px;
+            font-family: Segoe UI;
+            font-weight: 700;
+        }
+
+        button {
+            cursor: pointer;
+            background: unset;
+            border: unset;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feed-input {
+        display: flex;
+        padding: 20px 0px;
+    }
+
+    .feed-input>img {
+        border-radius: 50%;
+    }
+
+    .feed-input>input {
+        flex: 1;
+        margin-left: 15px;
+        font-size: 22px;
+        font-family: Segoe UI;
+        font-weight: 600;
+        font-size: 20px;
+        border: none;
+    }
+
+    .feed-input>input:focus {
+        outline: none;
+    }
+
+
+    .feed-collage{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 55px;
+
+        div{
+            display: flex;
+            gap: 20px;
+        }
+
+        svg{
+           display: block;
+        }
+
+
+        button {
+            cursor: pointer;
+            background: unset;
+            border: unset;
+        }
+    
+        button.tweet {
+            display: block;
+            font-size: 18px;
+            margin-left: -15px;
+            font-family: Segoe UI;
+            font-weight: 700;
+            background: #1da1f2;
+            color: #fff;
+            width: 100%;
+            max-width: 108px;
+            padding: 15px 0px;
+           border-radius: 120px;
+            cursor: pointer;
+        }
+    }
+
+}
+
+
