@@ -1,17 +1,17 @@
 .feed {
     width: 55%;
     max-width: 909px;
-    border-right: 1px solid #c4c4c4;
+    border-right: 2px solid #f7f9f9;;
 
 
     header {
         width: 100%;
-    max-width: 909px;
-        border-bottom: 1px solid #c4c4c4;
+        max-width: 909px;
+        border-bottom: 2px solid #f7f9f9;;
         position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 100;
+        top: 0;
+        background-color: white;
+        z-index: 100;
     }
 
     .header-inner {
@@ -37,6 +37,8 @@
     form {
         display: flex;
         flex-direction: column;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #f7f9f9;
     }
 
     .feed-input {
@@ -63,19 +65,20 @@
     }
 
 
-    .feed-collage{
+    .feed-collage {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-left: 55px;
+        margin-bottom: 10px;
 
-        div{
+        div {
             display: flex;
             gap: 20px;
         }
 
-        svg{
-           display: block;
+        svg {
+            display: block;
         }
 
 
@@ -84,7 +87,7 @@
             background: unset;
             border: unset;
         }
-    
+
         button.tweet {
             display: block;
             font-size: 18px;
@@ -96,11 +99,17 @@
             width: 100%;
             max-width: 108px;
             padding: 15px 0px;
-           border-radius: 120px;
+            border-radius: 120px;
             cursor: pointer;
         }
     }
 
+    .tweet {
+        margin: 0px 0px;
+    }
+
+    
 }
+
 
 

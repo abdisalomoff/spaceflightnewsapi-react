@@ -1,0 +1,98 @@
+.tweet {
+    margin: 30px 0px;
+    border-bottom: 2px solid #f7f9f9;
+
+    .tweet-user-info {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .tweet-user-avatar {
+        width: 40px;
+        border-radius: 50px;
+        // display: block;  
+    }
+
+    .tweet-user-info-head {
+        margin-left: 10px;
+    }
+
+    .tweet-user-info-head div {
+        display: flex;
+        align-items: center;
+    }
+
+    .tweet-user-name {
+        display: block;
+        color: black;
+        font-size: 20px;
+        font-family: Segoe UI;
+        font-weight: 700;
+    }
+
+    .tweet-user-username,
+    .tweet-user-point,
+    .tweet-user-posttime {
+        color: black;
+        font-size: 18px;
+        font-family: Segoe UI;
+        font-weight: 400;
+        opacity: 0.6;
+    }
+
+
+    .tweet-user-username {
+        margin-left: 5px;
+    }
+
+    .tweet-user-point {
+        padding: 0px 4px;
+    }
+
+    .tweet-user-more-btn {
+        display: block;
+        font-size: 30px;
+        color: black;
+        margin-left: auto;
+
+    }
+
+    .tweet-user-text {
+        color: black;
+        font-size: 18px;
+        font-family: Segoe UI;
+        font-weight: 400;
+    }
+
+    .tweet-user-image {
+        width: 100%;
+        max-width: 500px;
+        margin-top: 15px;
+        margin-bottom: 22px;
+        border-radius: 20px;
+    }
+
+
+    .tweet-icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 55px;
+        padding-bottom: 10px;
+    }
+
+    .tweet-icons div {
+        display: flex;
+        align-items: center;
+    }
+
+    .tweet-icons div span {
+        color: #536471;
+        font-size: 16px;
+        font-family: Segoe UI;
+        font-weight: 400;
+        padding: 0px 8px;
+    }
+
+}

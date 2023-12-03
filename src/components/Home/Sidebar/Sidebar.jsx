@@ -4,6 +4,7 @@ import { home, explore, twitter, notifications, messages, bookmarks, lists, prof
 import userImage from '../../../assets/images/user.jpg';
 
 import "./Sidebar.scss"
+import React from 'react';
 
 const Sidebar = () => {
   return (
@@ -58,4 +59,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default React.memo(Sidebar);

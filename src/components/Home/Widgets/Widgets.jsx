@@ -1,3 +1,5 @@
+import React from "react";
+
 import "./Widgets.scss"
 
 import { search } from '../../../assets/icons'
@@ -17,4 +19,4 @@ const Widgets = () => {
   )
 }
 
-export default Widgets
+export default React.memo(Widgets);
