@@ -13,7 +13,7 @@ const Feed = () => {
       <header className="container">
         <div className="header-inner">
           <h1>Home</h1>
-          <button>{darkmode}</button>
+          <button className='darkmode'>{darkmode}</button>
         </div>
       </header>
 

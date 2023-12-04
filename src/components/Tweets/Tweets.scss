@@ -59,6 +59,7 @@
     }
 
     .tweet-user-text {
+        margin-bottom: 12px;
         color: black;
         font-size: 18px;
         font-family: Segoe UI;
@@ -68,8 +69,9 @@
     .tweet-user-image {
         width: 100%;
         max-width: 500px;
+        height: auto;
         margin-top: 15px;
-        margin-bottom: 22px;
+        margin-bottom: 5px;
         border-radius: 20px;
     }
 
@@ -79,7 +81,7 @@
         align-items: center;
         justify-content: space-between;
         margin-left: 55px;
-        padding-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     .tweet-icons div {
@@ -95,4 +97,90 @@
         padding: 0px 8px;
     }
 
+
+
 }
+
+.tweet-icons div button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition: all 0.2s ease;
+}
+
+/* Reply icon hover */
+
+
+.reply button,
+.view button,
+.share button,
+.repost button,
+.like button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+.reply,
+.view,
+.share {
+    & button:hover {
+        background-color: rgb(29, 161, 242, 0.1);
+        border-radius: 50%;
+    }
+
+    & button:hover+span {
+        color: #1da1f2;
+    }
+
+
+    & button:hover svg path {
+        fill: #1da1f2;
+    }
+}
+
+/* Repost icon hover */
+.repost button:hover {
+    
+    background-color: rgb(14, 180, 72, 0.1);
+    border-radius: 50%;
+}
+
+.repost button:hover+span {
+    color: #0CB245;
+}
+
+
+.repost button:hover svg path {
+    fill: #0CB245;
+}
+
+
+.repost button:active+span {
+    color: #EF1C5C;
+}
+
+
+/* Like icon hover */
+.like button:hover {
+    background-color: rgb(240, 28, 92, 0.1);
+    border-radius: 50%;
+}
+
+.like button:hover+span {
+    color: #EF1C5C;
+
+}
+
+.like button:active+span {
+    color: #EF1C5C;
+}
+
+
+.like button:hover svg path {
+    fill: #EF1C5C;
+}
+

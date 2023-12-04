@@ -1,51 +1,88 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 
-import { reply, repost, like, share, view } from '../../assets/icons'
+import { reply, repost, reposted, like, liked, share, view } from '../../assets/icons'
 
 import "./Tweets.scss"
 
-const Tweets = () => {
-  let { tweets, loading} = useFetch();
-
     // Datani mos kelgan formatga o'zgartirish
     const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const currentDate = new Date();
-  
-    const timeDifference = currentDate - date;
-  
-    if (timeDifference < 60 * 1000) {
-      return Math.floor(timeDifference / 1000) + 's';
-    } else if (timeDifference < 60 * 60 * 1000) {
-      return Math.floor(timeDifference / (60 * 1000)) + 'm';
-    } else if (timeDifference < 24 * 60 * 60 * 1000) {
-      return Math.floor(timeDifference / (60 * 60 * 1000)) + 'h';
-    } else if (currentDate.getFullYear() === date.getFullYear()) {
-      // Sana bo'lmagan, bitta yil o'tgan joyda
-      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    } else {
-      // Boshqa yil
-      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    }
-  };
-    // End
-  
-    // Tweet textni ichidagi kelib qolgan urlni linkka aylantirish   
-  const formatLinkTweetText = (text) => {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-  
-    return text.replace(urlRegex, (url) => {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
-    });
-  };
-    // End
+        const date = new Date(dateString);
+        const currentDate = new Date();
+      
+        const timeDifference = currentDate - date;
+      
+        if (timeDifference < 60 * 1000) {
+          return Math.floor(timeDifference / 1000) + 's';
+        } else if (timeDifference < 60 * 60 * 1000) {
+          return Math.floor(timeDifference / (60 * 1000)) + 'm';
+        } else if (timeDifference < 24 * 60 * 60 * 1000) {
+          return Math.floor(timeDifference / (60 * 60 * 1000)) + 'h';
+        } else if (currentDate.getFullYear() === date.getFullYear()) {
+          /* Faqat oy va sana kelsa, yani ayni paytdagi yilda tweet qilingan bo'lsa */
+          return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        } else {
+          /* Boshqa yil */
+          return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+      };
+        // End
+      
+        // Tweet textni ichidagi kelib qolgan urlni linkka aylantirish   
+      const formatLinkTweetText = (text) => {
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+      
+        return text.replace(urlRegex, (url) => {
+          return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+        });
+      };
+        // End
+    
+
+const Tweets = () => {
+  let { tweets, loading,} = useFetch();
 
   useEffect(() => {
     console.log("Fetched Tweets:", tweets);
   }, [tweets]);
-  
 
+
+//  LIKE BUTTON
+  const tweetsJSON = localStorage.getItem("likeTweets");
+  const [likeTweets, setLikeTweets] = useState(JSON.parse(tweetsJSON) || []);
+
+  const handleLike = (tweetId) => {
+    setLikeTweets((prevLikeTweets) => {
+      let updateLikeTweets;
+
+      if (prevLikeTweets.includes(tweetId)) {
+        updateLikeTweets = prevLikeTweets.filter((id) => id !== tweetId);
+      } else {
+        updateLikeTweets = [...prevLikeTweets, tweetId];
+      }
+      localStorage.setItem('likeTweets', JSON.stringify(updateLikeTweets));
+
+      return updateLikeTweets;
+    });
+  };
+//   repost BUTTON
+const repostTweetsJSON = localStorage.getItem("repostTweets");
+const [repostTweets, setrepostTweets] = useState(JSON.parse(repostTweetsJSON) || []);
+
+const handleRepost = (tweetId) => {
+    setrepostTweets((prevRepostTweets) => {
+      let updarepostTweets;
+
+      if (prevRepostTweets.includes(tweetId)) {
+        updarepostTweets = prevRepostTweets.filter((id) => id !== tweetId);
+      } else {
+        updarepostTweets = [...prevRepostTweets, tweetId];
+      }
+      localStorage.setItem('repostTweets', JSON.stringify(updarepostTweets));
+
+      return updarepostTweets;
+    });
+  };
   return (
          <>
             {loading && <div className="loader"></div>}
@@ -66,24 +103,28 @@ const Tweets = () => {
                         </div>
                     </div>
                     <div className="tweet-icons">
-                        <div>
-                            <a href="#">{reply}</a>
+                        <div className="reply">
+                            <button>{reply}</button>
                             <span>{tweet.reply_count}</span>
                         </div>
-                        <div>
-                            <a href="#">{repost}</a>
-                            <span>{tweet.quote_count}</span>
+                        <div className="repost">
+                            <button onClick={() => handleRepost(tweet.tweet_id)}>
+                                {repostTweets.includes(tweet.tweet_id) ? reposted : repost}
+                            </button>
+                            <span>{tweet.quote_count + (repostTweets.includes(tweet.tweet_id) ? 1 : 0)}</span>
                         </div>
-                        <div>
-                            <a href="#">{like}</a>
-                            <span>{tweet.retweet_count}</span>
+                        <div className="like">
+                            <button onClick={() => handleLike(tweet.tweet_id)}>
+                                {likeTweets.includes(tweet.tweet_id) ? liked : like}
+                            </button>
+                            <span>{tweet.retweet_count + (likeTweets.includes(tweet.tweet_id) ? 1 : 0)}</span>
                         </div>
-                        <div>
-                            <a href="#">{view}</a>
+                        <div className="view">
+                            <button>{view}</button>
                             <span>{tweet.favorite_count}</span>
                         </div>
-                        <div>
-                            <a href="#">{share}</a>
+                        <div className="share">
+                            <button>{share}</button>
                         </div>
     
                     </div>

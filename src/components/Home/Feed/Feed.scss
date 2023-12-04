@@ -1,13 +1,24 @@
 .feed {
     width: 55%;
     max-width: 909px;
-    border-right: 2px solid #f7f9f9;;
+    border-right: 2px solid #f7f9f9;
+    ;
 
+    .darkmode {
+        padding: 10px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: #EFF3F4;
+            border-radius: 50%;
+        }
+    }
 
     header {
         width: 100%;
         max-width: 909px;
-        border-bottom: 2px solid #f7f9f9;;
+        border-bottom: 2px solid #f7f9f9;
+        ;
         position: sticky;
         top: 0;
         background-color: white;
@@ -108,8 +119,5 @@
         margin: 0px 0px;
     }
 
-    
+
 }
-
-
-
