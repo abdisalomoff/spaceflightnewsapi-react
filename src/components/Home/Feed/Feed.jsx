@@ -1,13 +1,39 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'
 
 import "./Feed.scss"
-
 import { darkmode,image, gif, stats, emoji, schedule } from '../../../assets/icons'
-
 import userImage from '../../../assets/images/user.jpg';
 import Tweets from '../../Tweets/Tweets';
+import { useState } from 'react';
+
 
 const Feed = () => {
+  const postInputRef = useRef()
+  const [loading, setLoading] = useState(false);
+  const [inputValue, setInputValue] = useState(''); 
+
+  const submit = (evt) => {
+    evt.preventDefault();
+    let inputValue = postInputRef.current.value;
+    console.log(inputValue);
+
+    // Local storagega saqlash
+    localStorage.setItem("inputValue", inputValue);
+    setInputValue(inputValue);
+  };
+
+  useEffect(() => {
+    // Local storagedan bor malumotlarni olish
+    const storedInputValue = localStorage.getItem("inputValue");
+    if (storedInputValue) {
+      setInputValue(storedInputValue);
+    }
+  }, []);
+
+  
+
+
   return (
     <div className="feed">
       <header className="container">
@@ -17,10 +43,11 @@ const Feed = () => {
         </div>
       </header>
 
-      <form className='container'>
+      <form onSubmit={submit} className='form container'>
         <div className="feed-input">
           <img src={userImage} alt="avatar" width="40px" />
           <input
+            ref={postInputRef}
             placeholder="What's happening?"
             type="text"
           />
@@ -37,9 +64,13 @@ const Feed = () => {
         </div>
       </form>
 
+      {loading ? (
+      <div className="loader"></div>
+    ) : (
       <ul className="container">
-        <Tweets/>
+        <Tweets inputValue={inputValue} />
       </ul>
+    )}
     </div>
   )
 }

@@ -5,6 +5,8 @@ import "./Widgets.scss"
 import { search } from '../../../assets/icons'
 
 const Widgets = () => {
+  console.log("Widgets re-render");
+    
   return (
     <div className="widgets">
         <div className="container">

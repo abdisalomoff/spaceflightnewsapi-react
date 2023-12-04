@@ -2,44 +2,16 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 
 import { reply, repost, reposted, like, liked, share, view } from '../../assets/icons'
+import { formatDate, formatLinkTweetText } from '../../assets/format-functions'
+
+import userImage from '../../assets/images/user.jpg';
 
 import "./Tweets.scss"
 
-    // Datani mos kelgan formatga o'zgartirish
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const currentDate = new Date();
-      
-        const timeDifference = currentDate - date;
-      
-        if (timeDifference < 60 * 1000) {
-          return Math.floor(timeDifference / 1000) + 's';
-        } else if (timeDifference < 60 * 60 * 1000) {
-          return Math.floor(timeDifference / (60 * 1000)) + 'm';
-        } else if (timeDifference < 24 * 60 * 60 * 1000) {
-          return Math.floor(timeDifference / (60 * 60 * 1000)) + 'h';
-        } else if (currentDate.getFullYear() === date.getFullYear()) {
-          /* Faqat oy va sana kelsa, yani ayni paytdagi yilda tweet qilingan bo'lsa */
-          return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        } else {
-          /* Boshqa yil */
-          return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        }
-      };
-        // End
-      
-        // Tweet textni ichidagi kelib qolgan urlni linkka aylantirish   
-      const formatLinkTweetText = (text) => {
-        const urlRegex = /(https?:\/\/[^\s]+)/g;
-      
-        return text.replace(urlRegex, (url) => {
-          return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
-        });
-      };
-        // End
-    
 
-const Tweets = () => {
+const Tweets = (props) => {
+    const {inputValue} = props;
+    console.log(inputValue);
   let { tweets, loading,} = useFetch();
 
   useEffect(() => {
@@ -83,9 +55,57 @@ const handleRepost = (tweetId) => {
       return updarepostTweets;
     });
   };
+  
+
+  
+  
   return (
          <>
+            {inputValue && (
+            <li className="tweet">
+                <div className="tweet-user-info">
+                    <img className="tweet-user-avatar" src={userImage} alt="tweet.user.name" />
+                    <div className="tweet-user-info-head">
+                        <div>
+                            <h2 className="tweet-user-name">Avazbek</h2>
+                            <a className="tweet-user-username" href="#">@abdisalomoff</a>
+                            <span className="tweet-user-point">·</span>
+                            <span className="tweet-user-posttime">{formatDate(new Date())}</span>
+                            <a className="tweet-user-more-btn" href="#">···</a>
+                        </div>
+                        <p className="tweet-user-text">{inputValue}</p>
+                    </div>
+                </div>
+                <div className="tweet-icons">
+                    <div className="reply">
+                        <button>{reply}</button>
+                        <span>0</span>
+                    </div>
+                    <div className="repost">
+                        <button>
+                            {repost}
+                        </button>
+                        <span>0</span>
+                    </div>
+                    <div className="like">
+                        <button>
+                            {like}
+                        </button>
+                        <span>0</span>
+                    </div>
+                    <div className="view">
+                        <button>{view}</button>
+                        <span>0</span>
+                    </div>
+                    <div className="share">
+                        <button>{share}</button>
+                    </div>
+                </div>
+            </li>
+            )}
+
             {loading && <div className="loader"></div>}
+
             {tweets.map((tweet, index) => (
                 <li key={index} className="tweet">
                     <div className="tweet-user-info">
@@ -129,10 +149,11 @@ const handleRepost = (tweetId) => {
     
                     </div>
                 </li>
-        ))} 
+            ))}
          </>
 
   );
+
 };
 
 export default Tweets;

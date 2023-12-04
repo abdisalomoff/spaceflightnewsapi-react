@@ -134,3 +134,25 @@
         }
     }
 }
+
+
+@media only screen and (max-width:1200px) {
+    .sidebar{
+        width: 21%;
+        max-width: 70px;
+        nav {
+
+    
+            span {
+                p{
+                    display: none;
+                }
+            }
+        }
+
+        footer{
+            display: none;
+        }
+    }
+}
+

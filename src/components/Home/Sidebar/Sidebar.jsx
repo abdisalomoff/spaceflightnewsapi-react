@@ -7,34 +7,35 @@ import "./Sidebar.scss"
 import React from 'react';
 
 const Sidebar = () => {
+  console.log("Sidebar re-render");
   return (
     <div className="sidebar">
-        <header><Link className="logo">{twitter}</Link></header>
+        <header><Link to="/" className="logo">{twitter}</Link></header>
 
         <nav>
           <NavLink to="/home">
-            <span>{home} Home</span>
+            <span>{home} <p>Home</p></span>
           </NavLink>
           <NavLink to="/explore">
-            <span>{explore} Explore</span>
+            <span>{explore} <p>Explore</p></span>
           </NavLink>
           <NavLink to="/notifications">
-            <span>{notifications} Notifications</span>
+            <span>{notifications} <p>Notifications</p></span>
           </NavLink>
           <NavLink to="/messages">
-            <span>{messages} Messages</span>
+            <span>{messages} <p>Notifications</p></span>
           </NavLink>
           <NavLink to="/bookmarks">
-            <span>{bookmarks} Bookmarks</span>
+            <span>{bookmarks} <p>Bookmarks</p></span>
           </NavLink>
           <NavLink to="/lists">
-            <span>{lists} Lists</span>
+            <span>{lists} <p>Lists</p></span>
           </NavLink>
           <NavLink to="/profile">
-            <span>{profile} Profile</span>
+            <span>{profile} <p>Profile</p></span>
           </NavLink>
           <button className="more">
-            <span>{more} More</span>
+            <span>{more} <p>More</p></span>
           </button>
         </nav>
 

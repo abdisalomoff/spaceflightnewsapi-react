@@ -19,7 +19,8 @@ const useFetch = () => {
           
 
         headers: {
-            'X-RapidAPI-Key': '75a60e6f70mshe304bf3dd47718ep1e22c7jsn6e351247ec9f',
+             'X-RapidAPI-Key': '9a6b50baacmsh4ce09a3d3962a9ap10ec81jsn3522c29b4f1d',
+            // 'X-RapidAPI-Key': '75a60e6f70mshe304bf3dd47718ep1e22c7jsn6e351247ec9f',
             // 'X-RapidAPI-Key': '183e0f9e9dmsh6a3205b52f588c1p19b7dfjsnbe984a32f185',
         //   'X-RapidAPI-Key': '35bad89a17msh6849503e3b74392p15d919jsn8db83a46e557',
         // 'X-RapidAPI-Key': '8e76f9c374msh24ae6856e431efap1014ddjsn525967a8037a',
@@ -49,6 +50,7 @@ const useFetch = () => {
 
     fetchData();
   }, []);
+  
 
   return { tweets ,error, loading };
 };
